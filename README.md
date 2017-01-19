@@ -23,6 +23,7 @@ CONTAINER ID        IMAGE                             COMMAND                  C
 
 Run a serverspec test:
 ```
+$ git clone https://github.com/nanliu/docker-serverspec.git
 $ cd docker-serverspec
 $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
   -v "$(pwd)":/serverspec \
