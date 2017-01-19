@@ -79,6 +79,6 @@ end
 ```
 $ cd docker-serverspec
 $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$(pwd)":/serverspec
-  -it nanliu/docker_serverspec:alpine /bin/sh "cd /serverspec && rspec mysql_spec.rb"
+  -v "$(pwd)":/serverspec \
+  -it nanliu/docker_serverspec:alpine /bin/sh -c "cd /serverspec && rspec mysql_spec.rb"
 ```
