@@ -33,8 +33,8 @@ Run a serverspec test with pry rescue:
 ```
 $ cd docker-serverspec
 $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$(pwd)":/serverspec
-  -it nanliu/docker_serverspec:alpine /bin/sh "cd /serverspec && rescue snap_spec.rb"
+  -v "$(pwd)":/serverspec \
+  -it nanliu/docker_serverspec:alpine /bin/sh -c "cd /serverspec && rescue snap_spec.rb"
 ```
 
 ## Writing Test
