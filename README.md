@@ -4,7 +4,7 @@ Docker container to run serverspec via Docker-in-Docker.
 
 ## Usage
 
-Docker-in-Docker in action:
+Docker-ception in action:
 ```
 $ docker pull nanliu/docker_serverspec:alpine
 $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
