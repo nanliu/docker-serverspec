@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -e
+set -u
+
+SNAP_VERSION=${SNAP_VERSION:-latest}
+CI_URL=${CI_URL:-https://s3-us-west-2.amazonaws.com/snap.ci.snap-telemetry.io}
+mkdir -p /usr/local/sbin
+mkdir -p /opt/snap/bin
+mkdir -p /opt/snap/sbin
+mkdir -p /opt/snap/plugins
+mkdir -p /var/log/snap
+mkdir -p /etc/snap
+
+[ -f /opt/snap/sbin/snapteld ] || (curl -sfL "${CI_URL}/snap/${SNAP_VERSION}/linux/x86_64/snapteld" -o /opt/snap/sbin/snapteld || curl -sfL "${CI_URL}/snap/${SNAP_VERSION}/linux/x86_64/snapd" -o /opt/snap/sbin/snapteld)
+[ -f /opt/snap/bin/snaptel ] || (curl -sfL "${CI_URL}/snap/${SNAP_VERSION}/linux/x86_64/snaptel" -o /opt/snap/bin/snaptel || curl -sfL "${CI_URL}/snap/${SNAP_VERSION}/linux/x86_64/snapctl" -o /opt/snap/bin/snaptel)
+chmod 755 /opt/snap/sbin/snapteld
+chmod 755 /opt/snap/bin/snaptel
+[ -f /usr/local/sbin/snapteld ] || ln -s /opt/snap/sbin/snapteld /usr/local/sbin/snapteld
+[ -f /usr/local/bin/snaptel ] || ln -s /opt/snap/bin/snaptel /usr/local/bin/snaptel
+
+# This can be removed after test have been migrated to the new binaries
+[ -f /usr/local/sbin/snapd ] || ln -s /opt/snap/sbin/snapteld /usr/local/sbin/snapd
+[ -f /usr/local/bin/snapctl ] || ln -s /opt/snap/bin/snaptel /usr/local/bin/snapctl
+[ -f /etc/snap/snapd.conf ] || ln -s /etc/snap/snapteld.conf /etc/snap/snapd.conf
