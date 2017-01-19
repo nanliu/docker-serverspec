@@ -25,7 +25,7 @@ Run a serverspec test:
 ```
 $ cd docker-serverspec
 $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$($pwd)":/serverspec
+  -v "$(pwd)":/serverspec
   -it nanliu/docker_serverspec:alpine /bin/sh "cd /serverspec && rspec snap_spec.rb"
 ```
 
@@ -33,7 +33,7 @@ Run a serverspec test with pry rescue:
 ```
 $ cd docker-serverspec
 $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$($pwd)":/serverspec
+  -v "$(pwd)":/serverspec
   -it nanliu/docker_serverspec:alpine /bin/sh "cd /serverspec && rescue snap_spec.rb"
 ```
 
@@ -79,6 +79,6 @@ end
 ```
 $ cd docker-serverspec
 $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
-  -v "$($pwd)":/serverspec
+  -v "$(pwd)":/serverspec
   -it nanliu/docker_serverspec:alpine /bin/sh "cd /serverspec && rspec mysql_spec.rb"
 ```
