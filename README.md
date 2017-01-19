@@ -38,18 +38,28 @@ $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
   -it nanliu/docker_serverspec:alpine /bin/sh -c "cd /serverspec && rescue rspec snap_spec.rb"
 ```
 
-## Writing Test
+## Writing the Test
 
 ### Docker Metadata
 * Change [`snap/Dockerfile`](snap/Dockerfile) to a new maintainer (your own name)
-* Fix [`snap_spec.rb`](snap_spec.rb) to match this change.
+```
+MAINTAINER your name <your@email.com>
+```
+* Update [`snap_spec.rb`](snap_spec.rb) to match this change.
 
 ### Serverspec
-* Change [`snap/Dockerfile`](snap/Dockerfile) configuration file to the following path:
+* Change the COPY entry in [`snap/Dockerfile`](snap/Dockerfile) to match the following:
 ```
 COPY snapteld.conf /etc/snapteld.conf
 ```
-* Fix [`snap_spec.rb`](snap_spec.rb) to match this change.
+* Update [`snap_spec.rb`](snap_spec.rb) to match this change.
+
+this will cause the symlink tests to fail
+
+* Update [`snap/init_snap`](snap/init_snap) to match this change.
+```
+[ -f /etc/snap/snapd.conf ] || ln -s /etc/snapteld.conf /etc/snap/snapd.conf
+```
 
 ### Run containers
 
