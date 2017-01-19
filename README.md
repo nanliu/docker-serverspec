@@ -41,14 +41,14 @@ $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
 
 ### Docker Metadata
 * Change [`snap/Dockerfile`](snap/Dockerfile) to a new maintainer (your own name)
-* Fix [`snap_spec.rb`] to match this change.
+* Fix [`snap_spec.rb`](snap_spec.rb) to match this change.
 
 ### Serverspec
 * Change [`snap/Dockerfile`](snap/Dockerfile) configuration file to the following path:
 ```
 COPY snapteld.conf /etc/snapteld.conf
 ```
-* Fix [`snap_spec.rb`] to match this change.
+* Fix [`snap_spec.rb`](snap_spec.rb) to match this change.
 
 ### Run containers
 
