@@ -8,6 +8,8 @@ group :development do
 end
 
 gem "rake"
+gem "hashie"
 gem "rspec-retry"
-gem "serverspec", "~> 2.37.0"
-gem "dockerspec", "~> 0.3.0"
+gem "docker-compose-api", :git => 'https://github.com/nanliu/docker-compose-api.git', :branch => 'env'
+gem "serverspec", "~> 2.38.0"
+gem "dockerspec", "~> 0.4.1"
