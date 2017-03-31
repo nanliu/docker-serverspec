@@ -1,0 +1,7 @@
+sudo: true
+services:
+  - docker
+language: ruby
+cache: bundler
+rvm:
+  - 2.4

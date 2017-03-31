@@ -1,21 +1,24 @@
 # docker-serverspec
 
+[![Build Status](https://travis-ci.org/nanliu/docker-serverspec.svg?branch=master)](https://travis-ci.org/nanliu/docker-serverspec)
+[![Image Layers](https://images.microbadger.com/badges/image/nanliu/serverspec.svg)](https://microbadger.com/images/nanliu/serverspec)
+
 Docker container to run serverspec via Docker-in-Docker.
 
 ## Usage
 
 Docker-ception in action:
 ```
-$ docker pull nanliu/docker_serverspec:alpine
+$ docker pull nanliu/serverspec:alpine
 $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
-  -it nanliu/docker_serverspec:alpine /bin/sh
+  -it nanliu/serverspec:alpine /bin/sh
 ```
 
 You should see all running containers in the serverspec container and all your docker images
 ```
 # docker ps
 CONTAINER ID        IMAGE                             COMMAND                  CREATED             STATUS              PORTS               NAMES
-405492d2c3fa        nanliu/docker_serverspec:alpine   "docker-entrypoint.sh"   8 seconds ago       Up 7 seconds                            vibrant_wright
+405492d2c3fa        nanliu/serverspec:alpine   "docker-entrypoint.sh"   8 seconds ago       Up 7 seconds                            vibrant_wright
 # docker images
 ...
 # exit
@@ -27,7 +30,7 @@ $ git clone https://github.com/nanliu/docker-serverspec.git
 $ cd docker-serverspec
 $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
   -v "$(pwd)":/serverspec \
-  -it nanliu/docker_serverspec:alpine /bin/sh -c "cd /serverspec && rspec snap_spec.rb"
+  -it nanliu/serverspec:alpine /bin/sh -c "cd /serverspec && rspec snap_spec.rb"
 ```
 
 Run a serverspec test with pry rescue:
@@ -35,7 +38,7 @@ Run a serverspec test with pry rescue:
 $ cd docker-serverspec
 $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
   -v "$(pwd)":/serverspec \
-  -it nanliu/docker_serverspec:alpine /bin/sh -c "cd /serverspec && rescue rspec snap_spec.rb"
+  -it nanliu/serverspec:alpine /bin/sh -c "cd /serverspec && rescue rspec snap_spec.rb"
 ```
 
 ## Writing the Test
@@ -91,5 +94,5 @@ end
 $ cd docker-serverspec
 $ docker run -v /var/run/docker.sock:/var/run/docker.sock \
   -v "$(pwd)":/serverspec \
-  -it nanliu/docker_serverspec:alpine /bin/sh -c "cd /serverspec && rspec mysql_spec.rb"
+  -it nanliu/serverspec:alpine /bin/sh -c "cd /serverspec && rspec mysql_spec.rb"
 ```
