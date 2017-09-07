@@ -13,3 +13,4 @@ gem "rspec-retry"
 gem "docker-compose-api", :git => 'https://github.com/nanliu/docker-compose-api.git', :branch => 'env'
 gem "serverspec", "~> 2.38.0"
 gem "dockerspec", "~> 0.4.1"
+gem "highline", "~> 1.7"
